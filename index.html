@@ -2839,7 +2839,18 @@
                         </div>
                         <div class="elementor-element elementor-element-1aae871a af slide-up elementor-widget elementor-widget-heading" data-id="1aae871a" data-element_type="widget" data-widget_type="heading.default">
                             <div class="elementor-widget-container">
-                                <h2 class="elementor-heading-title elementor-size-default">Nama Tamu</h2>
+                                <h2 class="elementor-heading-title elementor-size-default"><script>
+    // Ambil hash dari URL dan hilangkan tanda #
+    const rawHash = window.location.hash.substring(1);
+    // Decode supaya %20 atau + jadi spasi
+    const nama = rawHash ? decodeURIComponent(rawHash.replace(/\+/g, ' ')) : null;
+
+    if (nama) {
+      document.write(`${nama}`);
+    } else {
+      document.write('');
+    }
+  </script></h2>
                             </div>
                         </div>
                         <div class="elementor-element elementor-element-5bf14d2c elementor-align-center af slide-up elementor-widget elementor-widget-button" data-id="5bf14d2c" data-element_type="widget" id="open" data-widget_type="button.default">
@@ -5169,3 +5180,4 @@
     </body>
 
 </html>
+
