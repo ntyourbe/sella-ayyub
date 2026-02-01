@@ -54,41 +54,61 @@
 
 
   <script>
-    function generateLink() {
-      let baseUrl = "https://wedding-sella-ayyub.mvsub.eu.org/";
-      let nama = document.getElementById("nama").value.trim();
-      if (nama === "") {
-        document.getElementById("hasil").innerHTML = "<i>Masukkan nama terlebih dahulu!</i>";
-        return;
-      }
-      let encoded = encodeURIComponent(nama).replace(/%20/g, "+"); 
-      let finalLink = baseUrl + "#" + encoded;
-      document.getElementById("hasil").innerHTML = 
-        `<b><i>Assalamualaikum Warahmatullahi Wabarakatuh</i></b><br/><br/>
-         Tanpa mengurangi rasa hormat, perkenankan kami mengundang <i>Bapak/Ibu/Saudara/i</i> <b>${nama}</b> untuk menghadiri acara kami.<br/><br/>
-         <b>Berikut link undangan kami</b>, untuk info lengkap dari acara bisa kunjungi:<br/><br/> ${finalLink}<br/><br/>
-         Merupakan suatu kebahagiaan bagi kami apabila <i>Bapak/Ibu/Saudara/i</i> berkenan untuk hadir dan memberikan doa restu.<br/><br/>
-         <b>Mohon maaf perihal undangan hanya di bagikan melalui pesan ini.</b><br/><br/>
-         Terima kasih banyak atas perhatiannya.<br/><br/>
-         Salam Hormat<br/><br/>
-         Sella & Ayyub`;
-    }
+let pesanWA = ""; // penampung pesan versi teks
 
-    function salinTeks() {
-  // 1. Ambil teks dari elemen
-  var teks = document.getElementById("teksUntukDisalin").innerText;
+function generateLink() {
+  let baseUrl = "https://wedding-sella-ayyub.mvsub.eu.org/";
+  let nama = document.getElementById("nama").value.trim();
 
-  // 2. Salin ke clipboard menggunakan API modern
-  navigator.clipboard.writeText(teks).then(function() {
-    alert("Teks berhasil disalin: " + teks);
-  }).catch(function(err) {
-    console.error('Gagal menyalin: ', err);
-  });
+  if (nama === "") {
+    document.getElementById("hasil").innerHTML = "<i>Masukkan nama terlebih dahulu!</i>";
+    return;
+  }
+
+  let encoded = encodeURIComponent(nama).replace(/%20/g, "+");
+  let finalLink = baseUrl + "#" + encoded;
+
+  // ✅ Versi HTML (untuk ditampilkan di web)
+  document.getElementById("hasil").innerHTML =
+    `<b><i>Assalamualaikum Warahmatullahi Wabarakatuh</i></b><br/><br/>
+     Tanpa mengurangi rasa hormat, perkenankan kami mengundang <i>Bapak/Ibu/Saudara/i</i> <b>${nama}</b> untuk menghadiri acara kami.<br/><br/>
+     <b>Berikut link undangan kami</b>, untuk info lengkap dari acara bisa kunjungi:<br/><br/> ${finalLink}<br/><br/>
+     Merupakan suatu kebahagiaan bagi kami apabila <i>Bapak/Ibu/Saudara/i</i> berkenan untuk hadir dan memberikan doa restu.<br/><br/>
+     <b>Mohon maaf perihal undangan hanya di bagikan melalui pesan ini.</b><br/><br/>
+     Terima kasih banyak atas perhatiannya.<br/><br/>
+     Salam Hormat<br/><br/>
+     Sella & Ayyub`;
+
+  // ✅ Versi TEXT (untuk WhatsApp)
+  pesanWA =
+`Assalamualaikum Warahmatullahi Wabarakatuh
+
+Tanpa mengurangi rasa hormat, perkenankan kami mengundang Bapak/Ibu/Saudara/i ${nama} untuk menghadiri acara kami.
+
+Berikut link undangan kami, untuk info lengkap dari acara bisa kunjungi:
+
+${finalLink}
+
+Merupakan suatu kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan untuk hadir dan memberikan doa restu.
+
+Mohon maaf perihal undangan hanya dibagikan melalui pesan ini.
+
+Terima kasih banyak atas perhatiannya.
+
+Salam Hormat,
+Sella & Ayyub`;
 }
 
-  </script>
-
+// ✅ Fungsi kirim ke WhatsApp
+function shareWA() {
+  if (pesanWA === "") {
+    alert("Buat link dulu sebelum share ke WhatsApp!");
+    return;
+  }
+  let url = "https://wa.me/?text=" + encodeURIComponent(pesanWA);
+  window.open(url, "_blank");
+}
+</script>
 
 </body>
 </html>
-*
