@@ -64,14 +64,26 @@
       let encoded = encodeURIComponent(nama).replace(/%20/g, "+"); 
       let finalLink = baseUrl + "#" + encoded;
       document.getElementById("hasil").innerHTML = 
-        `<p id="teksUntukDisalin"><b><i>Assalamualaikum Warahmatullahi Wabarakatuh</i></b><br/><br/>
+        `<b><i>Assalamualaikum Warahmatullahi Wabarakatuh</i></b><br/><br/>
          Tanpa mengurangi rasa hormat, perkenankan kami mengundang <i>Bapak/Ibu/Saudara/i</i> <b>${nama}</b> untuk menghadiri acara kami.<br/><br/>
          <b>Berikut link undangan kami</b>, untuk info lengkap dari acara bisa kunjungi:<br/><br/> ${finalLink}<br/><br/>
          Merupakan suatu kebahagiaan bagi kami apabila <i>Bapak/Ibu/Saudara/i</i> berkenan untuk hadir dan memberikan doa restu.<br/><br/>
          <b>Mohon maaf perihal undangan hanya di bagikan melalui pesan ini.</b><br/><br/>
          Terima kasih banyak atas perhatiannya.<br/><br/>
          Salam Hormat<br/><br/>
-         Sella & Ayyub</p>
+         Sella & Ayyub
+
+         <div style="display: none;">
+         <p id="teksUntukDisalin">_Assalamualaikum Warahmatullahi Wabarakatuh_<br/><br/>
+         Tanpa mengurangi rasa hormat, perkenankan kami mengundang _Bapak/Ibu/Saudara/i_ *${nama}* untuk menghadiri acara kami.<br/><br/>
+         *Berikut link undangan kami*, untuk info lengkap dari acara bisa kunjungi:<br/><br/> ${finalLink}<br/><br/>
+         Merupakan suatu kebahagiaan bagi kami apabila _Bapak/Ibu/Saudara/i_ berkenan untuk hadir dan memberikan doa restu.<br/><br/>
+         *Mohon maaf perihal undangan hanya di bagikan melalui pesan ini.*<br/><br/>
+         Terima kasih banyak atas perhatiannya.<br/><br/>
+         *Salam Hormat<br/><br/>
+         Sella & Ayyub*</p></div>
+
+         
          <button onclick="salinTeks()">Salin Teks & Bagikan Di WA</button>`;
     }
 
@@ -92,3 +104,4 @@
 
 </body>
 </html>
+*
