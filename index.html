@@ -3681,13 +3681,7 @@
                                                 </div>
                                                 <!--.cui-clearfix cui-relative-->
                                             </div>
-                                            <!--.cui-wrap-form-->
-                                            <div id='cui-comment-status-124047' class='cui-comment-status'></div>
-                                            <div id='cui-box' class='cui-box'>
-                                                <ul id='cui-container-comment-124047' class='cui-container-comments cui-order-DESC  cui-has-5-comments cui-multiple-comments' data-order='DESC'></ul>
-                                            </div>
-                                            <div id='cui-holder-id-124047' class='cui-holder-124047 cui-holder'></div>
-                                        </div>
+                                                  </div>
                                         <!--.cui-wrap-comments-->
                                     </div>
                                     <!--.cui-wrapper-->
@@ -5172,7 +5166,28 @@
                 }
             });
         </script>
-        <script src="https://cdn.jsdelivr.net/gh/ntyourbe/andre-ria/wa.js"></script>
+        <script>
+            const form = document.getElementById('myForm'); 
+ 
+    form.addEventListener('submit', function(event) { 
+      event.preventDefault(); // Prevent form submission 
+ 
+      // Get form values 
+      const name = document.getElementById('name').value; 
+      const message = document.getElementById('pesan').value; 
+ 
+      // Format data for WhatsApp URL 
+      const formattedName = encodeURIComponent(name); 
+      const formattedMessage = encodeURIComponent(message); 
+       
+      // Build WhatsApp URL 
+      const whatsappUrl = `https://wa.me/+6287763224687?text=${formattedName}%0A${formattedMessage}`; 
+ 
+      // Open WhatsApp URL 
+      window.open(whatsappUrl); 
+    }); </script>
+    
+    
         <style>
             .elementor-lightbox .elementor-lightbox-item {
                 padding: 20px !important;
@@ -5181,6 +5196,7 @@
     </body>
 
 </html>
+
 
 
 
